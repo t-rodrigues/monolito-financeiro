@@ -14,6 +14,7 @@ object frmPrincipal: TfrmPrincipal
   OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu
@@ -29,7 +30,7 @@ object frmPrincipal: TfrmPrincipal
     object menuRelatorios: TMenuItem
       Caption = 'Relat'#243'rios'
     end
-    object MenuAjuda: TMenuItem
+    object menuAjuda: TMenuItem
       Caption = 'Ajuda'
     end
   end
