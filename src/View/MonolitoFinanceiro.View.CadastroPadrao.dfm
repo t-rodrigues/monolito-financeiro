@@ -24,8 +24,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
     Align = alClient
     ActiveCard = cardPesquisa
     TabOrder = 0
-    ExplicitWidth = 672
-    ExplicitHeight = 488
     object cardPesquisa: TCard
       Left = 1
       Top = 1
@@ -34,9 +32,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
       Caption = 'cardPesquisa'
       CardIndex = 0
       TabOrder = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitHeight = 426
       object pnlPesquisa: TPanel
         Left = 0
         Top = 0
@@ -80,7 +75,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         Height = 70
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 356
         object btnFechar: TButton
           Left = 572
           Top = 1
@@ -157,7 +151,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         Height = 345
         Align = alClient
         TabOrder = 2
-        ExplicitHeight = 275
         object DBGrid1: TDBGrid
           Left = 1
           Top = 1
@@ -181,8 +174,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
       Caption = 'cardCadastro'
       CardIndex = 1
       TabOrder = 0
-      ExplicitWidth = 670
-      ExplicitHeight = 486
       object pnlCadastroBotoes: TPanel
         Left = 0
         Top = 426
@@ -190,8 +181,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         Height = 70
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 416
-        ExplicitWidth = 670
         object btnCancelar: TButton
           Left = 572
           Top = 1
@@ -205,7 +194,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
           Images = ImageList1
           TabOrder = 0
           OnClick = btnCancelarClick
-          ExplicitLeft = 562
         end
         object btnSalvar: TButton
           Left = 465
@@ -219,7 +207,6 @@ object frmCadastroPadrao: TfrmCadastroPadrao
           ImageMargins.Top = 10
           Images = ImageList1
           TabOrder = 1
-          ExplicitLeft = 455
         end
       end
     end
@@ -1822,5 +1809,9 @@ object frmCadastroPadrao: TfrmCadastroPadrao
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object DataSource1: TDataSource
+    Left = 57
+    Top = 290
   end
 end

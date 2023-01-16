@@ -42,6 +42,7 @@ type
     pnlCadastroBotoes: TPanel;
     btnCancelar: TButton;
     btnSalvar: TButton;
+    DataSource1: TDataSource;
     procedure btnIncluirClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);

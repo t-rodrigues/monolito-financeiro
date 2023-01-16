@@ -22,9 +22,9 @@ object frmPrincipal: TfrmPrincipal
     Top = 40
     object menuCadastros: TMenuItem
       Caption = 'Cadastros'
-      object menuCadastroPadrao: TMenuItem
-        Caption = 'Cadastro Padr'#227'o'
-        OnClick = menuCadastroPadraoClick
+      object menuCadastroUsuarios: TMenuItem
+        Caption = 'Usu'#225'rios'
+        OnClick = menuCadastroUsuariosClick
       end
     end
     object menuRelatorios: TMenuItem

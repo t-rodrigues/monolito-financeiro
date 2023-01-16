@@ -20,8 +20,8 @@ type
     menuCadastros: TMenuItem;
     menuRelatorios: TMenuItem;
     menuAjuda: TMenuItem;
-    menuCadastroPadrao: TMenuItem;
-    procedure menuCadastroPadraoClick(Sender: TObject);
+    menuCadastroUsuarios: TMenuItem;
+    procedure menuCadastroUsuariosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -35,8 +35,8 @@ var
 implementation
 
 uses
-  MonolitoFinanceiro.View.CadastroPadrao,
-  MonolitoFinanceiro.View.Spash;
+  MonolitoFinanceiro.View.Spash,
+  MonolitoFinanceiro.View.Usuarios;
 
 {$R *.dfm}
 
@@ -50,9 +50,9 @@ begin
   end;
 end;
 
-procedure TfrmPrincipal.menuCadastroPadraoClick(Sender: TObject);
+procedure TfrmPrincipal.menuCadastroUsuariosClick(Sender: TObject);
 begin
-  frmCadastroPadrao.ShowModal;
+  frmUsuarios.ShowModal;
 end;
 
 end.
