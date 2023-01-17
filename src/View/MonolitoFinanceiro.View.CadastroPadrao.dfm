@@ -14,6 +14,7 @@ object frmCadastroPadrao: TfrmCadastroPadrao
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 19
   object pnlPrincipal: TCardPanel
