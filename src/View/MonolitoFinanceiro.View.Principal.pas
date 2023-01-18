@@ -36,7 +36,8 @@ implementation
 
 uses
   MonolitoFinanceiro.View.Spash,
-  MonolitoFinanceiro.View.Usuarios;
+  MonolitoFinanceiro.View.Usuarios,
+  MonolitoFinanceiro.View.Login;
 
 {$R *.dfm}
 
@@ -47,6 +48,15 @@ begin
     frmSplashScreen.ShowModal;
   finally
     FreeAndNil(frmSplashScreen);
+  end;
+  frmLogin := TfrmLogin.Create(nil);
+  try
+    frmLogin.ShowModal;
+
+    if frmLogin.ModalResult <> mrOk then
+      Application.Terminate;
+  finally
+    FreeAndNil(frmLogin);
   end;
 end;
 
