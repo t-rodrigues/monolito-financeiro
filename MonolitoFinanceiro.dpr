@@ -20,9 +20,9 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TdmUsuarios, dmUsuarios);
+  Application.CreateForm(TdmSistema, dmSistema);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmCadastroPadrao, frmCadastroPadrao);
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
-  Application.CreateForm(TdmSistema, dmSistema);
   Application.Run;
 end.

@@ -27,7 +27,9 @@ object dmUsuarios: TdmUsuarios
       FieldName = 'login'
     end
     object cdsUsuariossenha: TStringField
+      DisplayWidth = 20
       FieldName = 'senha'
+      Size = 60
     end
     object cdsUsuariosstatus: TStringField
       FieldName = 'status'
@@ -35,6 +37,10 @@ object dmUsuarios: TdmUsuarios
     end
     object cdsUsuariosdata_cadastro: TDateField
       FieldName = 'data_cadastro'
+    end
+    object cdsUsuariossenha_temporaria: TStringField
+      FieldName = 'senha_temporaria'
+      Size = 1
     end
   end
   object dspUsuarios: TDataSetProvider

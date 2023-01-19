@@ -18,31 +18,30 @@ inherited frmUsuarios: TfrmUsuarios
       inherited pnlGrid: TPanel
         inherited DBGrid1: TDBGrid
           DataSource = DataSource1
+          PopupMenu = PopupMenu1
           Columns = <
             item
               Expanded = False
               FieldName = 'id'
-              Width = 71
+              Width = 101
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'nome'
-              Title.Caption = 'Nome'
-              Width = 281
+              Width = 256
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'login'
-              Title.Caption = 'Login'
-              Width = 251
+              Width = 143
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'status'
-              Title.Caption = 'Status'
+              Width = 151
               Visible = True
             end>
         end
@@ -64,16 +63,9 @@ inherited frmUsuarios: TfrmUsuarios
         Height = 19
         Caption = 'Login:'
       end
-      object Label4: TLabel [2]
+      object Label5: TLabel [2]
         Left = 38
-        Top = 105
-        Width = 49
-        Height = 19
-        Caption = 'Senha:'
-      end
-      object Label5: TLabel [3]
-        Left = 38
-        Top = 145
+        Top = 106
         Width = 49
         Height = 19
         Caption = 'Status:'
@@ -97,21 +89,14 @@ inherited frmUsuarios: TfrmUsuarios
         Height = 27
         TabOrder = 2
       end
-      object edtSenha: TEdit
-        Left = 93
-        Top = 102
-        Width = 360
-        Height = 27
-        TabOrder = 3
-      end
       object ToggleSwitch1: TToggleSwitch
         Left = 93
-        Top = 143
+        Top = 104
         Width = 130
         Height = 21
         StateCaptions.CaptionOn = 'Ativo'
         StateCaptions.CaptionOff = 'Bloqueado'
-        TabOrder = 4
+        TabOrder = 3
       end
     end
   end
@@ -123,5 +108,13 @@ inherited frmUsuarios: TfrmUsuarios
     DataSet = dmUsuarios.cdsUsuarios
     Left = 617
     Top = 370
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 617
+    Top = 258
+    object menuLimparSenha: TMenuItem
+      Caption = 'Limpar senha'
+      OnClick = menuLimparSenhaClick
+    end
   end
 end

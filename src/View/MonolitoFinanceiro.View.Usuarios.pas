@@ -7,11 +7,11 @@ uses
   Winapi.Messages,
   System.Variants,
   System.Classes,
+  System.SysUtils,
   Vcl.Graphics,
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  MonolitoFinanceiro.View.CadastroPadrao,
   Data.DB,
   System.ImageList,
   Vcl.ImgList,
@@ -20,30 +20,34 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.WinXPanels,
-  MonolitoFinanceiro.Model.Usuarios,
   Vcl.WinXCtrls,
-  MonolitoFinanceiro.Utilitarios;
+  MonolitoFinanceiro.View.CadastroPadrao,
+  MonolitoFinanceiro.Model.Usuarios,
+  MonolitoFinanceiro.Utilitarios,
+  Vcl.Menus;
 
 type
   TfrmUsuarios = class(TfrmCadastroPadrao)
     edtNome: TEdit;
     edtLogin: TEdit;
-    edtSenha: TEdit;
     ToggleSwitch1: TToggleSwitch;
     Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
     Label5: TLabel;
+    PopupMenu1: TPopupMenu;
+    menuLimparSenha: TMenuItem;
     procedure btnPesquisarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnIncluirClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
+    procedure menuLimparSenhaClick(Sender: TObject);
   private
     { Private declarations }
     procedure limparFormulario;
     procedure validarFormulario;
+    function hashSenha(payload: String): String;
   public
     { Public declarations }
   end;
@@ -51,10 +55,14 @@ type
 var
   frmUsuarios: TfrmUsuarios;
 
+const
+  TEMP_PASSWORD = '123';
+
 implementation
 
 uses
-  System.SysUtils;
+  BCrypt,
+  BCrypt.Types;
 
 {$R *.dfm}
 
@@ -64,7 +72,6 @@ begin
   dmUsuarios.cdsUsuarios.Edit;
   edtNome.Text := dmUsuarios.cdsUsuariosNome.AsString;
   edtLogin.Text := dmUsuarios.cdsUsuariosLogin.AsString;
-  edtSenha.Text := dmUsuarios.cdsUsuariosSenha.AsString;
 
   ToggleSwitch1.State := tssOn;
   if dmUsuarios.cdsUsuariosstatus.AsString.ToUpper = 'B' then
@@ -140,12 +147,12 @@ begin
   begin
     dmUsuarios.cdsUsuariosid.AsString := TUtilitario.GetId;
     dmUsuarios.cdsUsuariosdata_cadastro.AsDateTime := now;
+    dmUsuarios.cdsUsuariossenha.AsString := hashSenha(TEMP_PASSWORD);
     LMensagem := 'Registro adicionado com sucesso.';
   end;
 
   dmUsuarios.cdsUsuariosNome.AsString := Trim(edtNome.Text);
   dmUsuarios.cdsUsuariosLogin.AsString := Trim(edtLogin.Text);
-  dmUsuarios.cdsUsuariosSenha.AsString := Trim(edtSenha.Text);
   dmUsuarios.cdsUsuariosstatus.AsString := LStatus.ToUpper;
   dmUsuarios.cdsUsuarios.Post;
   dmUsuarios.cdsUsuarios.ApplyUpdates(0);
@@ -153,6 +160,11 @@ begin
   Application.MessageBox(PWideChar(LMensagem), 'Atenção',
     MB_OK + MB_ICONINFORMATION);
   pnlPrincipal.ActiveCard := cardPesquisa;
+end;
+
+function TfrmUsuarios.hashSenha(payload: String): String;
+begin
+  Result := TBCrypt.GenerateHash(payload);
 end;
 
 procedure TfrmUsuarios.limparFormulario;
@@ -166,6 +178,22 @@ begin
 
     if Components[I] is TToggleSwitch then
       TToggleSwitch(Components[I]).State := tssOn;
+  end;
+end;
+
+procedure TfrmUsuarios.menuLimparSenhaClick(Sender: TObject);
+var
+  LNome: String;
+begin
+  inherited;
+
+  if not DataSource1.DataSet.IsEmpty then
+  begin
+    LNome := DataSource1.DataSet.FieldByName('nome').AsString;
+    dmUsuarios.LimparSenha(DataSource1.DataSet.FieldByName('id').AsString);
+    Application.MessageBox
+      (PWideChar(Format('Foi definida a senha padrão para o usuário %s.',
+      [LNome])), 'Atenção', MB_OK + MB_ICONEXCLAMATION);
   end;
 end;
 
@@ -183,14 +211,6 @@ begin
   begin
     edtLogin.SetFocus;
     Application.MessageBox('O campo login não pode ser vazio.', 'Atenção',
-      MB_OK + MB_ICONWARNING);
-    abort;
-  end;
-
-  if Trim(edtSenha.Text) = '' then
-  begin
-    edtSenha.SetFocus;
-    Application.MessageBox('O campo Senha não pode ser vazio.', 'Atenção',
       MB_OK + MB_ICONWARNING);
     abort;
   end;

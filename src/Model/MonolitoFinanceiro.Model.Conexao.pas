@@ -56,7 +56,6 @@ var
   ParametroNome: String;
   ParametroValor: String;
   Item: String;
-  Contador: Integer;
   ListaParametros: TStringList;
 begin
   SQLConexao.Params.Clear;
