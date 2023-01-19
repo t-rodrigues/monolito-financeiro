@@ -14,6 +14,7 @@ object frmLogin: TfrmLogin
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 19
   object pnlEsquerda: TPanel
@@ -27,7 +28,6 @@ object frmLogin: TfrmLogin
     Padding.Top = 100
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 389
     object imgLogo: TImage
       Left = 0
       Top = 100
@@ -765,9 +765,6 @@ object frmLogin: TfrmLogin
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 247
-    ExplicitWidth = 621
-    ExplicitHeight = 387
     object Panel1: TPanel
       Left = 0
       Top = 121
@@ -779,9 +776,6 @@ object frmLogin: TfrmLogin
       Padding.Top = 20
       Padding.Right = 60
       TabOrder = 0
-      ExplicitTop = 0
-      ExplicitWidth = 621
-      ExplicitHeight = 94
       object Panel3: TPanel
         Left = 60
         Top = 92
@@ -793,10 +787,7 @@ object frmLogin: TfrmLogin
         Margins.Bottom = 0
         Align = alTop
         BevelOuter = bvNone
-        TabOrder = 0
-        ExplicitLeft = 1
-        ExplicitTop = 1
-        ExplicitWidth = 495
+        TabOrder = 1
         object Label2: TLabel
           Left = 0
           Top = 0
@@ -804,8 +795,6 @@ object frmLogin: TfrmLogin
           Height = 19
           Align = alTop
           Caption = 'Senha'
-          ExplicitLeft = 1
-          ExplicitTop = 1
           ExplicitWidth = 43
         end
         object edtSenha: TEdit
@@ -816,9 +805,6 @@ object frmLogin: TfrmLogin
           Align = alTop
           PasswordChar = '*'
           TabOrder = 0
-          ExplicitLeft = 1
-          ExplicitTop = 20
-          ExplicitWidth = 493
         end
       end
       object Panel4: TPanel
@@ -832,10 +818,7 @@ object frmLogin: TfrmLogin
         Margins.Bottom = 0
         Align = alTop
         BevelOuter = bvNone
-        TabOrder = 1
-        ExplicitLeft = 61
-        ExplicitTop = 3
-        ExplicitWidth = 375
+        TabOrder = 0
         object Label3: TLabel
           Left = 0
           Top = 0
@@ -843,8 +826,6 @@ object frmLogin: TfrmLogin
           Height = 19
           Align = alTop
           Caption = 'Usu'#225'rio'
-          ExplicitLeft = 1
-          ExplicitTop = 1
           ExplicitWidth = 54
         end
         object edtLogin: TEdit
@@ -854,22 +835,30 @@ object frmLogin: TfrmLogin
           Height = 27
           Align = alTop
           TabOrder = 0
-          ExplicitLeft = 1
-          ExplicitTop = 20
-          ExplicitWidth = 493
         end
       end
-      object btnEntrar: TButton
+      object Panel5: TPanel
         Left = 60
         Top = 164
         Width = 377
-        Height = 48
+        Height = 53
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
         Align = alTop
-        Caption = 'Entrar'
+        BevelOuter = bvNone
         TabOrder = 2
-        ExplicitLeft = 61
-        ExplicitTop = 145
-        ExplicitWidth = 375
+        object btnEntrar: TButton
+          Left = 0
+          Top = 0
+          Width = 377
+          Height = 48
+          Align = alTop
+          Caption = 'Entrar'
+          TabOrder = 0
+          OnClick = btnEntrarClick
+        end
       end
     end
     object Panel2: TPanel
@@ -900,8 +889,6 @@ object frmLogin: TfrmLogin
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 1
-        ExplicitTop = 68
         ExplicitWidth = 466
       end
       object Label1: TLabel
@@ -923,8 +910,6 @@ object frmLogin: TfrmLogin
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 1
-        ExplicitTop = 31
         ExplicitWidth = 391
       end
     end
